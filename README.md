@@ -4,7 +4,7 @@ A personal portfolio website built with HTML, CSS, and JavaScript.
 
 ## 🚀 Live Demo
 
-[View Live](https://github.com/abdullahhh0/my-portfolio.git)
+[View Live](https://abdullahhh0.github.io/my-portfolio/)
 
 ## 🛠️ Built With
 
