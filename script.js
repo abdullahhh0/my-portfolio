@@ -32,8 +32,8 @@ window.onscroll = () => {
   navMenu.classList.remove('active');
 }
 
-//              To save contact ifnormation to your google sheet
-/*document.querySelector('#contact-form').onsubmit = (e) => {
+// Contact form
+document.querySelector('#contact-form').onsubmit = (e) => {
   e.preventDefault();
 
   const name = document.querySelector('input[placeholder="Full Name"]').value;
@@ -42,10 +42,50 @@ window.onscroll = () => {
   const subject = document.querySelector('input[placeholder="Subject For"]').value;
   const message = document.querySelector('#message-box').value;
 
-  const formUrl = `https://docs.google.com/forms/d/e/"YOUR_FORM_ID_HERE"/formResponse?entry.111=${name}&entry.222=${email}&entry.333=${mobile}&entry.444=${subject}&entry.555=${message}`;
+  const formUrl = `https://docs.google.com/forms/d/e/1FAIpQLSfXsYcREDkUr54E3kSdn6qc5zHjMNlr1spvjZru8v5r0cwykA/formResponse?entry.265854754=${name}&entry.655673856=${email}&entry.1592644372=${mobile}&entry.180140175=${subject}&entry.610631378=${message}`;
 
   fetch(formUrl, { method: 'POST', mode: 'no-cors' });
-
   alert('Message sent!');
   e.target.reset();
-}*/
+}
+
+// Chat popup toggle ← YEH NAYA HAI
+const chatBtn = document.querySelector('.chat-btn');
+const chatPopup = document.querySelector('.chat-popup');
+const chatClose = document.querySelector('.chat-close');
+
+chatBtn.onclick = () => chatPopup.style.display = 'flex';
+chatClose.onclick = () => chatPopup.style.display = 'none';
+
+// Chatbot
+const sendBtn = document.querySelector('.chat-input button');
+const chatInput = document.querySelector('.chat-input input');
+const chatMessages = document.querySelector('.chat-messages');
+
+async function sendMessage() {
+  const userMsg = chatInput.value.trim();
+  if (!userMsg) return;
+
+  chatMessages.innerHTML += `<div style="text-align:right; margin:1rem 0; color: var(--accent)">${userMsg}</div>`;
+  chatInput.value = '';
+
+  chatMessages.innerHTML += `<div id="bot-loading" style="text-align:left; margin:1rem 0; opacity:0.5">Typing...</div>`;
+  chatMessages.scrollTop = chatMessages.scrollHeight;
+
+  const response = await fetch('/api/chat', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ message: userMsg })
+  });
+
+  const data = await response.json();
+  document.getElementById('bot-loading').remove();
+
+  chatMessages.innerHTML += `<div style="text-align:left; margin:1rem 0">${data.reply}</div>`;
+  chatMessages.scrollTop = chatMessages.scrollHeight;
+}
+
+sendBtn.onclick = sendMessage;
+chatInput.addEventListener('keypress', (e) => {
+  if (e.key === 'Enter') sendMessage();
+});
