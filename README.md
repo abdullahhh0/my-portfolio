@@ -4,7 +4,8 @@ A personal portfolio website built with HTML, CSS, and JavaScript.
 
 ## 🚀 Live Demo
 
-[View Live](https://abdullahhh0.github.io/my-portfolio/)
+- **Frontend:** [GitHub Pages](https://abdullahhh0.github.io/my-portfolio/)
+- **Full Version (AI Chatbot):** [Vercel](https://my-portfolio-ecru-ten-43.vercel.app)
 
 ## 🛠️ Built With
 
@@ -12,6 +13,8 @@ A personal portfolio website built with HTML, CSS, and JavaScript.
 - CSS3
 - Vanilla JavaScript
 - [Boxicons](https://boxicons.com/)
+- Groq API (Llama 3.3)
+- Vercel Serverless Functions
 
 ## ✨ Features
 
@@ -57,4 +60,3 @@ This project is licensed under the MIT License — see the [LICENSE](LICENSE) fi
 - Instagram: [@abdullah\_.bin_nasir](https://www.instagram.com/abdullah_.bin_nasir)
 - Twitter/X: [@itz_abdullahhh](https://x.com/itz_abdullahhh)
 - Facebook: [Abdullah Rajpoot](https://www.facebook.com/abdullah.rajpoot.7121614)
- 
